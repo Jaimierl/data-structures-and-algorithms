@@ -30,18 +30,18 @@ Write a function named typeNum that, given an array as input, uses filter to ret
 For example, typeNum([1, 'bob' ,3]) returns [1,3].
 ------------------------------------------------------------------------------------------------ */
 
-// const typeNum = (arr) => {
-//   let arr2 = arr.filter((elem) => {
-//     if (elem.typeof === 'number') {
-//       return elem
-//     };
-//   });
-//   return arr2;
-// };
-
 const typeNum = (arr) => {
-  return arr.filter(elem => typeof (value) === 'number');
+  let arr2 = arr.filter((elem) => {
+    if (typeof elem === 'number') {
+      return elem;
+    }
+  });
+  return arr2;
 };
+
+// const typeNum = (arr) => {
+//   return arr.filter(elem => typeof (value) === 'number');
+// };
 
 // const typeNum = (arr) => {
 //   return arr.filter(Number);
