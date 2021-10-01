@@ -136,8 +136,13 @@ const snorlaxData = {
 };
 
 const getBaseStatGreaterThan = (arr, minBaseStat) => {
-  return arr.filter((element) => { element.getBaseStat > minBaseStat });
+  return arr.filter((element) => {
+    if (element.baseStat > minBaseStat) {
+      return element;
+    }
+  });
 };
+
 // Note - snorlaxData.stats will give us the stats array.
 
 /* ------------------------------------------------------------------------------------------------
