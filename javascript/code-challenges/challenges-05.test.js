@@ -142,6 +142,19 @@ Write a function named reversedString that takes in a string and returns a strin
 Note: You must use reduce for this challenge. You may not use the built-in .reverse() string method.
 ------------------------------------------------------------------------------------------------ */
 
+
+const reversedString = (str) => {
+  const arr6 = str.split('');
+  // console.log(arr6);
+  const stringArr = arr6.reduce((reverse, char) => {
+    // console.log('char: ', char);
+    // console.log('reverse: ', reverse);
+    return char + reverse;
+  }, '');
+  return stringArr;
+};
+
+
 // const reversedString = (str) => {
 //   let arr6 = str.reduce((acc, elem) => {
 //     return acc + elem.charAt[0];
@@ -200,8 +213,26 @@ const characters = [
 ];
 
 const countNumberOfChildren = (arr) => {
-  // Solution code here...
+  let childArr = arr.reduce((acc, elem) => {
+    if (elem.children) {
+      return acc + elem.children.length;
+    }
+  }, 0);
+  return childArr;
 };
+
+// const countNumberOfChildren = (arr) => {
+//   let childArr = [];
+//   arr.reduce((acc, elem) => {
+//     if (elem.children) {
+//       elem = elem.children;
+//       childArr.push(elem);
+//     }
+//   }, '');
+//   console.log(childArr);
+//   return childArr.length;
+// };
+// This is returning a count of 5 aka getting the 5 arrays of children and putting them into another array to count them.
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
@@ -347,7 +378,7 @@ describe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   test('It should return the total number of children', () => {
     expect(countNumberOfChildren(characters)).toStrictEqual(14);
   });
