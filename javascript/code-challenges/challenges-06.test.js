@@ -29,6 +29,10 @@ const getNames = (arr) => {
   return arr1;
 };
 
+// const getNames = (arr) => {
+//   return arr.map(person => person.name.split('').reverse().join(''));
+// }
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
@@ -40,6 +44,11 @@ const appendTheEnd = (str) => {
   let str1 = `${str} The end.`;
   return str1;
 };
+
+// const appendTheEnd = (str) => {
+//   str = str + ' The end.';
+//   return str;
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -94,6 +103,16 @@ const setStatusAsAuthor = (people) => {
   people.map((elem) => { elem.isAuthor = true; });
 };
 
+const setStatusAsAuthor = (people) => {
+  people.map((elem) => { elem.isAuthor = true; });
+};
+
+// const setStatusAsAuthor = (people) => {
+//   people.forEach(person =>{
+//     person.isAuthor = true;
+//   })
+// };
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6 - Stretch Goal
 
@@ -110,9 +129,14 @@ console.log(a) prints [1, 2, 3, 4]
 ------------------------------------------------------------------------------------------------ */
 
 const append = (arr1, arr2) => {
-  // Solution code here...
-
+  while (arr2.length) {
+    arr1.push(arr2.shift());
+  }
 };
+// From class - pass by reference
+// Asking us to put the values from array 2 into array 1
+// While loop since we do not know the array sizes and it will keep looping until it gets to the end. 
+// .shift will take the number out of arr2 while pushing into arr1
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
@@ -171,7 +195,7 @@ describe('Testing challenge 5', () => {
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   test('It should append the second array to the first', () => {
     const a = [1, 2, 3, 4];
     const b = [5, 6, 7, 8];
