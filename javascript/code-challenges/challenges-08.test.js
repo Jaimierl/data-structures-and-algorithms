@@ -54,9 +54,23 @@ let characters = [
   }
 ];
 
-const sortByChildren = (charArray) => {
-  // Solution code here...
-};
+// const sortByChildren = (charArray) => {
+//   return charArray.sort((a, b) => {
+//     if (a.children() < b.children()) {
+//       return -1;
+//     }
+//     if (a.children() > b.children()) {
+//       return 1;
+//     }
+//     else {
+//       return charArray.sort((c, d) => {
+//         if (c.name() < d.name()) { return -1; }
+//         else if (c.name() > d.name()) { return 1; }
+//         else if (c.name() === d.name()) { return 0; }
+//       }
+//   }
+//   });
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -83,7 +97,8 @@ For example:
 ------------------------------------------------------------------------------------------------ */
 
 const isNum = (input) => {
-  // Solution code here...
+  let regex = /[0-9]/;
+  return regex.test(input);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -94,7 +109,8 @@ Write a function named containsWorld that takes in a string or number of any len
 ------------------------------------------------------------------------------------------------ */
 
 const containsWorld = (input) => {
-  // Solution code here...
+  let regex = /world/;
+  return regex.test(input);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -106,7 +122,8 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
-  // Solution code here...
+  let regex = /^[A-Z]\w/g;
+  return str.match(regex);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -116,7 +133,8 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 ------------------------------------------------------------------------------------------------ */
 
 const citiesAtoJ = (arr) => {
-  // Solution code here...
+  let regex = /^[A-J]\w/g;
+  return satttr.match(regex);
 };
 
 /* ------------------------------------------------------------------------------------------------
