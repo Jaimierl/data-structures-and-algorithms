@@ -25,8 +25,11 @@ let starWarsPeople = [
 ];
 
 const sortStarWarsCharacters = (starWarsArr) => {
-  // Solution code here...
-}
+  return starWarsArr.sort((a, b) => {
+    return parseInt(b.height) - parseInt(a.height);
+    // a-b is smallest to largest, b-a is largest to smallest.
+  });
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -64,13 +67,22 @@ For example, if the input is 'Welcome', the output will be:
 
 const howMuchPencil = (str) => {
   let result = [];
-  result.push('');
   for (let i = 0; i < str.length + 1; i++) {
-    result.unshift(str.slice(-i));
+    console.log(str.slice(i));
+    result.push(str.slice(i));
   }
-  console.log(result);
   return result;
 };
+
+// const howMuchPencil = (str) => {
+//   let result = [];
+//   result.push('');
+//   for (let i = 0; i < str.length + 1; i++) {
+//     result.unshift(str.slice(-i));
+//   }
+//   console.log(result);
+//   return result;
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
