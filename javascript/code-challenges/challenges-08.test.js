@@ -54,6 +54,19 @@ let characters = [
   }
 ];
 
+const sortByChildren = (charArray) => {
+  return charArray.sort((a, b) => {
+    if (a.children.length > b.children.length) {
+      return 1;
+    } else if (a.children.length < b.children.length) {
+      return -1;
+    } else {
+      return a.house > b.house ? 1 : -1;
+      // this is the same as if a.house>b.house return 1, if not return negative 1 as a one-liner/terniary.
+    }
+  });
+};
+
 // const sortByChildren = (charArray) => {
 //   return charArray.sort((a, b) => {
 //     if (a.children() < b.children()) {
@@ -122,9 +135,16 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
-  let regex = /^[A-Z]\w/g;
-  return str.match(regex);
+  let regex = /[A-Z][A-Za-z]*/g;
+  // This means the first letter is capitalized followed by any letter then whatever.
+  return str.match(regex) || [];
 };
+// Class Version
+
+// const isCapitalized = (str) => {
+//   let regex = /^[A-Z]\w/g;
+//   return str.match(regex);
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -133,9 +153,26 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 ------------------------------------------------------------------------------------------------ */
 
 const citiesAtoJ = (arr) => {
-  let regex = /^[A-J]\w/g;
-  return satttr.match(regex);
+  let cityArray = [];
+  let regex = /^[A-J]/;
+  arr.forEach(city => {
+    // Want to test to see if city matches regex, if so push into array.
+    if (regex.test(city)) cityArray.push(city);
+  });
+  return cityArray;
 };
+// Class Version
+
+
+// const citiesAtoJ = (arr) => {
+//   let regex = /[A-J][A-Za-z]*/g;
+//   return arr.match(regex) || [];
+// };
+
+// const citiesAtoJ = (arr) => {
+//   let regex = /^[A-J]\w/g;
+//   return str.match(regex);
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
