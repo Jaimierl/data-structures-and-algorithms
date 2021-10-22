@@ -64,13 +64,21 @@ HR has asked you to change the data to make it easier to print so that it looks 
 
 ------------------------------------------------------------------------------------------------ */
 
+// const updateNumbers = (obj) => {
+//   let newArray = [];
+//   for (let item in obj) {
+//     newArray.push(item + ': ' + obj[item]);
+//   }
+//   return newArray;
+// };
+// My version
+
 const updateNumbers = (obj) => {
-  let newArray = [];
-  for (let item in obj) {
-    newArray.push(item + ': ' + obj[item]);
-  }
-  return newArray;
+  const arr4 = [];
+  Object.keys.forEach(key => arr4.push(`${key}: ${obj[key]}`));
+  return arr4;
 };
+// Class Version
 
 // const updateNumbers = (obj) => {
 //   let arr4 = Object.entries(obj).join(': ');
@@ -156,6 +164,23 @@ const hasChildrenValues = (arr, character) => {
   });
   return hasChildren;
 };
+//Our Version
+
+
+const hasChildrenValues = (arr, character) => {
+  let kids = 0;
+
+  arr.forEach(person => {
+    if (person.name === character) {
+      Object.keys(person).forRach((key, idx => {
+        if (key === 'children') kids = Object.values(person)[idx].length;
+      }
+      ))
+    }
+  })
+  return kids ? true : false
+};
+// Class Version - go through each person. if the person name matches the character we are looking for we will go through all of the keys. If the key = children, find the number of kids in the children.
 
 
 // const hasChildrenValues = (arr, character) => {
