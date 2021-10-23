@@ -9,7 +9,7 @@ Write a function named returnTen, takes in a string and uses split and splice to
 
 function returnTen(str) {
   let lettersArr = str.split('');
-  return lettersArr.splice(-1, lettersArr.length - 10);
+  return lettersArr.splice(lettersArr.length - 10);
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -86,19 +86,32 @@ const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
 
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
+// const grandTotal = (stores) => {
+//   let cookieSum = [];
+//   for (let i = 0; i < hoursOpen.length; i++) {
+//     let cookies = 0;
+//     for (let j = 0; j < stores.length; j++) {
+//       cookies += (stores[j][i]);
+//       // J is inside the cookie stores array and loops through the arrays in the array. Then the [i] next to it makes it loop through the hours individually.
+//     }
+//     cookieSum.push(cookies);
+//   }
+//   console.log(cookieSum);
+//   return cookieSum;
+// };
+
 const grandTotal = (stores) => {
-  let cookieSum = [];
-  for (let i = 0; i < hoursOpen.length; i++) {
-    let cookies = 0;
+  const hourlySales = [];
+  for (let i = 0; i < stores[0].length; i++) {
+    let hourlyTot = 0;
     for (let j = 0; j < stores.length; j++) {
-      cookies += (stores[j][i]);
-      // J is inside the cookie stores array and loops through the arrays in the array. Then the [i] next to it makes it loop through the hours individually.
+      hourlyTot += stores[j][i];
     }
-    cookieSum.push(cookies);
+    hourlySales.push(hourlyTot)
   }
-  console.log(cookieSum);
-  return cookieSum;
+  return hourlySales
 };
+// classVersion
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -111,17 +124,29 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 ------------------------------------------------------------------------------------------------ */
 
 const salesData = (hours, data) => {
-  let info = [];
-  for (let i = 0; i < hours; i++) {
-    let cookies = 0;
-    info.push({});
-    for (let j = 0; i < data; j++) {
-      cookies += (data[j][i]);
-      info[i].push(`sales: '${cookies} cookies', time: ${hours[i]} `);
-    }
-  }
-  return info;
+  const salesOverview = [];
+  data.forEach((sale, idx) => {
+    salesOverview.push({
+      sales: `${sale} cookies`,
+      time: hours[idx]
+    });
+  });
+  return salesOverview;
 };
+// Class Version
+
+// const salesData = (hours, data) => {
+//   let info = [];
+//   for (let i = 0; i < hours; i++) {
+//     let cookies = 0;
+//     info.push({});
+//     for (let j = 0; i < data; j++) {
+//       cookies += (data[j][i]);
+//       info[i].push(`sales: '${cookies} cookies', time: ${hours[i]} `);
+//     }
+//   }
+//   return info;
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -144,20 +169,25 @@ const errands = [
   }
 ];
 
+// const howManyTreats = (arr) => {
+//   let treats = 0;
+//   arr.map(elem => {
+//     if (elem.store == ('Pet store')) {
+//       elem.items.map(itemElem => {
+//         if (itemElem.name == ('Treats')) {
+//           treats += itemElem.quantity;
+//         }
+//       });
+//     }
+//   });
+//   console.log(treats);
+//   return treats;
+// };
+
 const howManyTreats = (arr) => {
-  let treats = 0;
-  arr.map(elem => {
-    if (elem.store == ('Pet store')) {
-      elem.items.map(itemElem => {
-        if (itemElem.name == ('Treats')) {
-          treats += itemElem.quantity;
-        }
-      });
-    }
-  });
-  console.log(treats);
-  return treats;
+  return arr[2].items[1].quantity;
 };
+// class version
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
