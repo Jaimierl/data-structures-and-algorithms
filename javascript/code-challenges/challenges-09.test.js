@@ -75,7 +75,7 @@ HR has asked you to change the data to make it easier to print so that it looks 
 
 const updateNumbers = (obj) => {
   const arr4 = [];
-  Object.keys.forEach(key => arr4.push(`${key}: ${obj[key]}`));
+  Object.keys(obj).forEach(key => arr4.push(`${key}: ${obj[key]}`));
   return arr4;
 };
 // Class Version
