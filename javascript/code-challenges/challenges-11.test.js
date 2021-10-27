@@ -22,7 +22,7 @@ function transformToLis(obj) {
   const arr1 = [];
   // console.log('--------------', Object.keys(obj));
   Object.keys(obj).forEach(key => arr1.push(`<li>${key}: ${obj[key]}</li>`));
-  console.log(arr1);
+  // console.log(arr1);
   return arr1;
 }
 
@@ -37,8 +37,31 @@ For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
 ------------------------------------------------------------------------------------------------ */
 
 const count = (target, input) => {
-  // Solution code here...
+  let count = 0;
+  input.map((arrayInBigArray) => {
+    arrayInBigArray.map((num) => {
+      if (num === target) {
+        count++;
+      }
+    });
+  });
+  return count;
 };
+
+
+// const count = (target, input) => {
+//   return input.reduce((acc, currentVal) => {
+//     const rowCount = currentVal.reduce((innerAcc, innerVal) => {
+//       if (innerVal === target) {
+//         innerAcc + 1;
+//       }
+//       return innerAcc;
+//     }, 0);
+//     return acc + rowCount;
+//   }, 0);
+// };
+// Class version - so target ends up being the INTEGER we are looking for. - Not working so reqritten
+// The target and input are in the order of the directions with integer and array.
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -68,7 +91,18 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 ------------------------------------------------------------------------------------------------ */
 
 const divisibleByFiveTwoToThePower = (input) => {
-  // Solution code here...
+  let twoToThePower = [];
+  input.forEach(elem => {
+    let newArray = [];
+    elem.forEach(elem2 => {
+      if ((typeof (elem2) === 'number') && (elem2 % 5 === 0)) {
+        elem2 = Math.pow(2, elem2);
+        newArray.push(elem2);
+      }
+    });
+    twoToThePower.push(newArray);
+  });
+  return twoToThePower;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -133,15 +167,26 @@ let starWarsData = [{
   gender: 'female'
 }];
 
+// let findMaleAndFemale = (data) => {
+//   let arr5 = [];
+//   data.forEach(elem => {
+//     if (elem.gender ? 'male' : 'female') {
+//       arr5.push(elem.name);
+//     }
+//     return arr5.join(' and ');
+//   });
+// };
+// My version - not working.
+
 let findMaleAndFemale = (data) => {
-  let arr5 = [];
-  data.forEach(elem => {
-    if (elem.gender ? 'male' : 'female') {
-      arr5.push(elem.name);
-    }
-    return arr5.join(' and ');
-  });
+  return data.filter(char => char.gender === 'male' || char.gender === 'female')
+    .map(char => char.name)
+    .join(' and ');
 };
+// class version
+// If you catch something from the filter
+// Then you can map through the NEW ARRAY and get only the names
+// Then the join you'd gotten.
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -150,7 +195,7 @@ Write a function named findShortest that, given the Star Wars data from Challeng
 ------------------------------------------------------------------------------------------------ */
 
 let findShortest = (data) => {
-  // Solution code here...
+  return data.reduce((shortestSoFarAcc, nextCharacterVal) => Number(shortestSoFarAcc.height) < Number(nextCharacterVal.height) ? shortestSoFarAcc : nextCharacterVal).name;
 };
 
 /* ------------------------------------------------------------------------------------------------
