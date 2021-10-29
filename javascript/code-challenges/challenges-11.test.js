@@ -47,6 +47,7 @@ const count = (target, input) => {
   });
   return count;
 };
+// Array.map automatically gives you back a new array whereas forEach does not. That is the difference between them.
 
 
 // const count = (target, input) => {
