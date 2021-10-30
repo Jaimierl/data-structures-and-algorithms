@@ -52,6 +52,12 @@ const hasNumber = (string) => {
   return regex.test(string);
 };
 
+// const hasNumber = (string) => {
+//   let regex = /[a-zA-Z]+\d+/;
+//   return regex.test(string);
+// };
+// Class Version - uses \d to find digits
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
 
@@ -69,9 +75,10 @@ Note: if you ever need to validate an email using a regex in practice, the Inter
 ------------------------------------------------------------------------------------------------ */
 
 const validateEmail = (email) => {
-  // Solution code here...
+  let regex = /^[A-Za-z0-9]+\.?[A-Za-z0-9]+?@[A-Za-z0-9]+\.(net|com|org|biz)$/g;
+  return regex.test(email);
 };
-
+// Class version - parenthesis for or statement.^ means start, $ means end. The backslash before the period is making the regex look for the period.
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
 
@@ -94,9 +101,18 @@ Return either true or false.
 ------------------------------------------------------------------------------------------------ */
 
 const validatePhoneNumber = (phoneNumber) => {
-  let regex = /^*?[0-9]{3}*?{0,2}[0-9]{3}*?[0-9]{3}/;
+  let regex = /^(\(\d{3}\)|\d{3})(\s|-)?\d{3}(\s|-)?\d{4}$/g;
   return regex.test(phoneNumber);
 };
+
+// const validatePhoneNumber = (phoneNumber) => {
+//   let regex = /^*?[0-9]{3}*?{0,2}[0-9]{3}*?[0-9]{3}/;
+//   return regex.test(phoneNumber);
+// };
+// My version - doesnt work
+
+
+// Class Version
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
