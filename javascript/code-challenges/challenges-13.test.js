@@ -34,14 +34,19 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['this
 ------------------------------------------------------------------------------------------------ */
 
 const findHappiness = (arr) => {
-  let arr2 = [];
-  arr.forEach(elem => {
-    if (elem.includes(\: \)) {
-      arr2.push(elem);
-    }
-  });
-  return arr2;
+  return arr.filter(happy => happy.includes(':)'));
 };
+// Class Version
+
+// const findHappiness = (arr) => {
+//   let arr2 = [];
+//   arr.forEach(elem => {
+//     if (elem.includes(\: \)) {
+//       arr2.push(elem);
+//     }
+//   });
+//   return arr2;
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -52,9 +57,9 @@ For example, (123) 456-7890 returns 1234567890
 ------------------------------------------------------------------------------------------------ */
 
 const standardizePhoneNumbers = (arr) => {
-  let arr3 = [];
-  // I want to be able to remove the characters or the things at that position but can't figure it out atm.
+  return arr.map(num => `${num.substring(1, 4)}${num.substring(6, 9)}${num.substring(10)}`);
 };
+// Substring - start counting at 0 and the numbers are up to and not including. The last one where we just put an index number goes from there to the end.
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 
@@ -65,8 +70,11 @@ For example, 'abcdefg' returns 'bdf'
 ------------------------------------------------------------------------------------------------ */
 
 const onlyOddChars = (str) => {
-  // Solution code here...
+  return str.split('')
+    .filter((element, idx) => idx % 2 === 1)
+    .join('');
 };
+// % divides the number AND gives the remainder. if %2=1 that means its an odd number.
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6 
@@ -75,8 +83,9 @@ Write a function named allHappy that takes in an array of strings and returns a 
 ------------------------------------------------------------------------------------------------ */
 
 const allHappy = (arr) => {
-  // Solution code here...
+  return arr.every(strong => strong.includes(':)'));
 };
+// Class Version - New Array Prototype .every() that tests every element.
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
